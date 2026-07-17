@@ -1,43 +1,54 @@
 # rust-fuse
+[![Rust](https://img.shields.io/badge/Rust-1.63+-blue.svg)](https://www.rust-lang.org/tools/install)
+[![MIT License](https://img.shields.io/badge/License-MIT-orange.svg)](https://opensource.org/licenses/MIT)
+[![CircleCI](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fcircleci.com%2Fbadge%2F%3Forganization%3Dyour-username%26repo%3Drust-fuse)](https://circleci.com/gh/your-username/rust-fuse)
 
-## Description
-
-Création d'un filesystem FUSE en Rust pour les systèmes Linux.
-
-## Contexte
-
-Ce projet est une implémentation d'un filesystem FUSE en Rust pour les systèmes Linux. Il utilise la bibliothèque `fuse-rs` pour interagir avec le noyau Linux et la bibliothèque `libc` pour accéder aux fonctions système.
+## Description détaillée
+rust-fuse est un projet qui vise à créer un filesystem FUSE (Filesystem in Userspace) en Rust pour les systèmes Linux. Ce projet permet de créer un système de fichiers personnalisé qui peut être monté sur un système Linux comme un disque dur virtuel.
 
 ## Fonctionnalités
+- Création d'un filesystem FUSE en Rust
+- Liaison avec le noyau Linux via le module noyau
+- Support pour les appels de système (syscalls)
+- Implémentation de la bibliothèque FUSE
+- Tests unitaires pour le filesystem
 
-- `syscall tracing`: permet de tracer les appels système pour déboguer les problèmes.
-- `eBPF support`: permet d'utiliser le programme de filtre eBPF pour améliorer les performances.
+## Installation
+Pour installer rust-fuse, vous devez avoir Rust 1.63+ installé sur votre système. Vous pouvez le télécharger depuis [le site officiel de Rust](https://www.rust-lang.org/tools/install).
 
-## Dépendances
+```bash
+cargo build
+```
 
-- `fuse-rs`: bibliothèque pour interagir avec le noyau Linux.
-- `libc`: bibliothèque pour accéder aux fonctions système.
-- `log`: bibliothèque de logging.
-- `pretty_env_logger`: bibliothèque pour logger les informations d'environnement.
+## Usage
+Pour utiliser rust-fuse, vous devez créer un fichier de configuration qui spécifie les paramètres du filesystem. Voici un exemple de fichier de configuration :
 
-## Structure du projet
+```toml
+[filesystem]
+name = "monfilesystem"
+description = "Mon premier filesystem FUSE"
+```
 
-* `src/main.rs`: fichier principal du projet.
-* `src/fuse.rs`: implémentation de la bibliothèque FUSE.
-* `src/module.rs`: module noyau pour la liaison FUSE.
-* `tests/main.rs`: tests unitaires pour le filesystem.
-* `Cargo.toml`: fichier de configuration de Cargo.
+Vous pouvez ensuite monté le filesystem en utilisant la commande suivante :
 
-## Comment utiliser le projet
+```bash
+cargo run --example mount
+```
 
-1. Cloner le projet avec `git clone`.
-2. Récupérer les dépendances avec `cargo build`.
-3. Compilez le projet avec `cargo run`.
+## Architecture du projet
+rust-fuse est structuré en plusieurs composants :
 
-## Aide
+* `src/main.rs` : Fichier principal du projet
+* `src/fuse.rs` : Implémentation de la bibliothèque FUSE
+* `src/module.rs` : Module noyau pour la liaison FUSE
+* `tests/main.rs` : Tests unitaires pour le filesystem
 
-Pour obtenir de l'aide, consultez le manuel de la bibliothèque `fuse-rs`.
+## Contribuer
+Si vous souhaitez contribuer à rust-fuse, vous pouvez :
+
+* Soumettre des pull requests avec des corrections de code ou des fonctionnalités nouvelles
+* Participer à la discussion sur le projet via les issues
+* Tester le projet et signaler les bugs
 
 ## Licence
-
-Ce projet est distribué sous la licence MIT.
+rust-fuse est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus d'informations.
