@@ -1,16 +1,18 @@
 # Design Document: rust-fuse
 
 ## Overview
-Création d'un filesystem FUSE en Rust pour les systèmes Linux
+# rust-fuse
+[![Rust](https://img.shields.io/badge/Rust-1.63+-blue.svg)](https://www.rust-lang.org/tools/install)
+[![MIT License](https://img.shields.io/badge/License-MIT-orange.svg)](https://opensourc
 
 ## Architecture
-Le projet est structuré de manière modulaire pour faciliter la maintenance.
+The project follows a modular architecture for maintainability and extensibility.
 
-## Choix techniques
-- Langage: rust
-- Approche: Implementation directe avec focus sur la performance
+## Technical Choices
+- Language: rust
+- Approach: Direct implementation with focus on correctness and performance
 
-## Améliorations futures
-- Optimisation des performances
-- Ajout de tests supplémentaires
-- Documentation enrichie
+## Future Improvements
+- Performance optimization
+- Additional test coverage
+- Enhanced documentation

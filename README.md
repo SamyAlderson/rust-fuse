@@ -1,54 +1,77 @@
 # rust-fuse
-[![Rust](https://img.shields.io/badge/Rust-1.63+-blue.svg)](https://www.rust-lang.org/tools/install)
-[![MIT License](https://img.shields.io/badge/License-MIT-orange.svg)](https://opensource.org/licenses/MIT)
-[![CircleCI](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fcircleci.com%2Fbadge%2F%3Forganization%3Dyour-username%26repo%3Drust-fuse)](https://circleci.com/gh/your-username/rust-fuse)
+> A high-performance, Rust-based FUSE filesystem for Linux.
 
-## Description détaillée
-rust-fuse est un projet qui vise à créer un filesystem FUSE (Filesystem in Userspace) en Rust pour les systèmes Linux. Ce projet permet de créer un système de fichiers personnalisé qui peut être monté sur un système Linux comme un disque dur virtuel.
+## Overview
+rust-fuse is a project that aims to create a reliable and efficient FUSE filesystem for Linux. It solves the problem of limited file system customization options on Linux, allowing users to create custom file systems with ease. This project matters because it provides a flexible and scalable solution for various use cases, such as cloud storage, data processing, and more.
 
-## Fonctionnalités
-- Création d'un filesystem FUSE en Rust
-- Liaison avec le noyau Linux via le module noyau
-- Support pour les appels de système (syscalls)
-- Implémentation de la bibliothèque FUSE
-- Tests unitaires pour le filesystem
+## Features
+- **High-performance**: Optimized for speed and efficiency, rust-fuse provides seamless file system operations.
+- **Customizable**: Users can create custom file systems with tailored behavior and functionality.
+- **Flexible**: rust-fuse supports various file system operations, including file creation, deletion, and modification.
+- **Scalable**: Designed to handle large files and directories, rust-fuse provides a robust solution for data-intensive applications.
+- **Secure**: rust-fuse follows secure coding practices and includes input validation to prevent potential security vulnerabilities.
+- **Extensible**: The modular design of rust-fuse makes it easy to add new features and functionality.
+- **Linux-compatible**: rust-fuse is specifically designed for Linux, providing a seamless integration with the operating system.
 
-## Installation
-Pour installer rust-fuse, vous devez avoir Rust 1.63+ installé sur votre système. Vous pouvez le télécharger depuis [le site officiel de Rust](https://www.rust-lang.org/tools/install).
+## Getting Started
 
+### Prerequisites
+- Rust 1.63+
+- Linux kernel 4.14+
+- FUSE library (version 2.9+)
+
+### Installation
 ```bash
+# Clone the repository
+git clone https://github.com/your-username/rust-fuse.git
+
+# Navigate to the project directory
+cd rust-fuse
+
+# Run the build script
 cargo build
 ```
 
-## Usage
-Pour utiliser rust-fuse, vous devez créer un fichier de configuration qui spécifie les paramètres du filesystem. Voici un exemple de fichier de configuration :
-
-```toml
-[filesystem]
-name = "monfilesystem"
-description = "Mon premier filesystem FUSE"
-```
-
-Vous pouvez ensuite monté le filesystem en utilisant la commande suivante :
-
+### Usage
 ```bash
-cargo run --example mount
+# Mount the FUSE filesystem
+cargo run -- mount /mnt/rust-fuse
+
+# Create a new file
+touch /mnt/rust-fuse/example.txt
+
+# List the contents of the directory
+ls /mnt/rust-fuse
 ```
 
-## Architecture du projet
-rust-fuse est structuré en plusieurs composants :
+## Architecture
+The rust-fuse project is structured into several key components:
 
-* `src/main.rs` : Fichier principal du projet
-* `src/fuse.rs` : Implémentation de la bibliothèque FUSE
-* `src/module.rs` : Module noyau pour la liaison FUSE
-* `tests/main.rs` : Tests unitaires pour le filesystem
+*   `src/main.rs`: The entry point of the project, responsible for setting up the FUSE filesystem.
+*   `src/fuse.rs`: Contains the implementation of the FUSE filesystem operations.
+*   `src/module.rs`: Provides a module for handling file system events and notifications.
 
-## Contribuer
-Si vous souhaitez contribuer à rust-fuse, vous pouvez :
+## API Reference (if applicable)
+The rust-fuse project exposes a public API for interacting with the FUSE filesystem. Some notable API endpoints include:
 
-* Soumettre des pull requests avec des corrections de code ou des fonctionnalités nouvelles
-* Participer à la discussion sur le projet via les issues
-* Tester le projet et signaler les bugs
+*   `mount`: Mounts the FUSE filesystem at a specified location.
+*   `unmount`: Unmounts the FUSE filesystem.
+*   `create_file`: Creates a new file in the FUSE filesystem.
+*   `delete_file`: Deletes a file from the FUSE filesystem.
 
-## Licence
-rust-fuse est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus d'informations.
+## Testing
+```bash
+# Run the tests
+cargo test
+```
+
+## Contributing
+1.  Fork the repository
+2.  Create a feature branch
+3.  Commit changes
+4.  Push and open a PR
+
+## License
+MIT License
+
+This project is licensed under the MIT License, which allows for free use, modification, and distribution of the software.
