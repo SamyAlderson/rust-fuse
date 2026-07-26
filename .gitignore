@@ -1,12 +1,17 @@
-__pycache__/
-*.pyc
-.pytest_cache/
-.env
-*.egg-info/
-dist/
-build/
-.venv/
+# .gitignore
+# ignore node_modules and yarn.lock
 node_modules/
+yarn.lock
+
+# ignore rust artifacts
 target/
-bin/
-obj/
+
+# ignore IDE files
+.idea/
+.vscode/
+
+# ignore other files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+ehcache.db
